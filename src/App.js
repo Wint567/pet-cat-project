@@ -4,8 +4,6 @@ import Header from "./components/Header.jsx";
 import CatList from "./components/CatList.jsx";
 import CatDetails from "./components/CatDetails.jsx";
 
-const API_KEY = "live_uOdOrZFsWVGMnq5XvIFYMZgH10XOLsDQvy4wy7jQJ8E5vPjnPvVcbE6DkHUxH8dR";
-
 function App() {
   const [cats, setCats] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -25,9 +23,7 @@ function App() {
     setLoading(true);
     setError("");
 
-    fetch("https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=1", {
-      headers: { "x-api-key": API_KEY },
-    })
+    fetch("https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=1")
       .then((res) => {
         if (!res.ok) throw new Error("Ошибка загрузки");
         return res.json();
